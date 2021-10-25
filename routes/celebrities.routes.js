@@ -21,4 +21,10 @@ router.get("/celebrities", function (req, res, next) {
           .catch(next);
   });
 
+router.get("/celebrities/delete", function (req, res, next) {
+  celebrityModel.findByIdAndRemove(req.params.id)
+    .then(() => res.redirect("celebrities"))
+    .catch(next);
+});
+
 module.exports = router;
